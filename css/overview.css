@@ -1,3 +1,13 @@
 .overview-main {
   margin-left: 180px;
 }
+
+.financial-summary {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid black;
+}
