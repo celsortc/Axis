@@ -4,10 +4,22 @@
 
 .financial-summary {
   display: flex;
+  height: 120px;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+}
+.card span {
+  font-size: 1.15rem;
 }
 
 .card {
   flex: 1;
   padding: 20px;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
 }
