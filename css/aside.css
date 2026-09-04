@@ -26,6 +26,10 @@ aside ul li {
   padding: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+aside li:hover {
+  background-color: rgba(165, 42, 42, 0.2);
+  cursor: pointer;
+}
 
 .nav-item a {
   text-decoration: none;
