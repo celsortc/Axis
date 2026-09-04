@@ -1,5 +1,10 @@
-.overview-main {
+.content-section {
   margin-left: 180px;
+  display: none;
+}
+
+.content-section.active {
+  display: block;
 }
 
 .title {
@@ -7,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.15);
 }
 
 .financial-summary {
