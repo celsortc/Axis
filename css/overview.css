@@ -13,6 +13,9 @@
 .financial-summary {
   display: flex;
   margin-top: 40px;
+  padding: 20px;
+  justify-content: space-around;
+  gap: 20px;
 }
 
 .card h2 {
@@ -23,13 +26,15 @@
 }
 
 .card {
-  flex: 1;
+  width: 150px;
   padding: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   gap: 15px;
   text-align: center;
+  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
 
 .categorias-container {
@@ -45,13 +50,39 @@
 
 .categorias-lista,
 .categorias-grafico {
-  background-color: lightblue;
   flex: 1;
-  padding: 10px 20px;
+  padding: 20px 40px;
   border-radius: 4px;
+  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.15);
+}
+
+.categorias-lista {
+  display: flex;
+  flex-direction: column;
 }
 
 .categorias-item {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+}
+
+.categorias-item:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.categorias-item:first-child {
+  font-weight: bold;
+}
+
+.span-categ-meta,
+.span-categ-atual {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.span-categ-descricao {
+  width: 150px;
 }
