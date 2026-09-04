@@ -1,3 +1,4 @@
-@import "./geral.css";
+@import "./global.css";
 @import "./aside.css";
 @import "./overview.css";
+@import "./transactions.css";
