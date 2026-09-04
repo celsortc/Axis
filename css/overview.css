@@ -23,3 +23,26 @@
   gap: 15px;
   text-align: center;
 }
+
+.categorias-container {
+  height: 80vh;
+}
+
+.categorias {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 30px;
+}
+
+.categorias-lista,
+.categorias-grafico {
+  background-color: lightblue;
+  flex: 1;
+  padding: 10px 20px;
+}
+
+.categorias-item {
+  display: flex;
+  justify-content: space-between;
+}
