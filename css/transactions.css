@@ -1,4 +1,115 @@
-.btn-lancamento {
-  padding: 20px;
+.transactions-section {
   margin: 20px;
+  padding: 20px;
+}
+
+.btn-lancamento {
+  padding: 10px 20px;
+  /* margin: 20px; */
+  border: none;
+  border-radius: 10px;
+  color: rgb(0, 0, 141);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s background ease;
+  background-color: rgb(0, 0, 141);
+  color: white;
+}
+
+.btn-lancamento:hover {
+  background-color: rgb(116, 116, 236);
+  color: white;
+}
+
+.filter-container {
+  margin-top: 60px;
+}
+
+.filter-container h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 20px;
+  font-weight: 500;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: end;
+  margin-top: 40px;
+}
+
+.filters span:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.transaction-date {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 20px 0px 60px;
+  display: block;
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.transactions-list div:not(:last-child) {
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 10px; */
+}
+
+.transactions-list div {
+  padding: 10px;
+}
+
+.transaction-row {
+  box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr;
+  align-items: center;
+  padding: 12px 16px;
+  column-gap: 12px;
+}
+
+.value-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.transaction-row span {
+  font-size: 1.25rem;
+}
+
+/* .transaction-symbol,
+.transaction-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+} */
+
+.transaction-category {
+  text-align: center;
+}
+.transaction-title {
+  display: flex;
+  align-items: center;
+}
+
+.transaction-symbol {
+  text-align: right;
+  font-weight: bold;
+  color: #2e7d32; /* Verde para entradas */
+}
+
+.transaction-value {
+  font-weight: 500;
+  text-align: right;
 }
