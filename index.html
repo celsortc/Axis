@@ -20,81 +20,107 @@
     </div>
     <nav>
       <ul>
-        <li class="nav-item"><a href="#">Overview</a></li>
-        <li class="nav-item"><a href="#">Lançamentos</a></li>
-        <li class="nav-item"><a href="#">Configurações</a></li>
+        <li class="nav-item" data-target="content-overview"><a href="#">Overview</a></li>
+        <li class="nav-item" data-target="content-transactions"><a href="#">Lançamentos</a></li>
+        <li class="nav-item" data-target="content-configs"><a href="#">Configurações</a></li>
       </ul>
     </nav>
   </aside>
 
-  <main class="overview-main">
-    <div class="title-container">
-      <h1 class="title">Overview</h1>
-    </div>
-
-    <section class="financial-summary">
-      <div class="card">
-        <h2>Saldo disponível</h2>
-        <span>R$ 2.000,00</span>
+  <main>
+    <section class="content-section active" id="content-overview">
+      <div class="title-container">
+        <h1 class="title">Overview</h1>
       </div>
-      <div class="card">
-        <h2>Entradas</h2>
-        <span>R$ 1.500,00</span>
-      </div>
-      <div class="card">
-        <h2>Saídas</h2>
-        <span>R$ 500,00</span>
-      </div>
-      <div class="card">
-        <h2>Investimentos</h2>
-        <span>R$ 0</span>
-      </div>
+      <section class="financial-summary">
+        <div class="card">
+          <h2>Saldo disponível</h2>
+          <span>R$ 2.000,00</span>
+        </div>
+        <div class="card">
+          <h2>Entradas</h2>
+          <span>R$ 1.500,00</span>
+        </div>
+        <div class="card">
+          <h2>Saídas</h2>
+          <span>R$ 500,00</span>
+        </div>
+        <div class="card">
+          <h2>Investimentos</h2>
+          <span>R$ 0</span>
+        </div>
+      </section>
+      <section class="categorias-container">
+        <div class="categorias">
+          <div class="categorias-lista">
+            <div class="categorias-item">
+              <span class="span-categ-descricao">Categoria</span>
+              <span class="span-categ-meta">Meta</span>
+              <span class="span-categ-atual">Atual</span>
+            </div>
+            <div class="categorias-item">
+              <span class="span-categ-descricao">Investimentos</span>
+              <span class="span-categ-meta">25%</span>
+              <span class="span-categ-atual">15%</span>
+            </div>
+            <div class="categorias-item">
+              <span class="span-categ-descricao">Custos Fixos</span>
+              <span class="span-categ-meta">40%</span>
+              <span class="span-categ-atual">50%</span>
+            </div>
+            <div class="categorias-item">
+              <span class="span-categ-descricao">Conforto</span>
+              <span class="span-categ-meta">10%</span>
+              <span class="span-categ-atual">10%</span>
+            </div>
+            <div class="categorias-item">
+              <span class="span-categ-descricao">Curto/Médio Prazo</span>
+              <span class="span-categ-meta">10%</span>
+              <span class="span-categ-atual">10%</span>
+            </div>
+            <div class="categorias-item">
+              <span class="span-categ-descricao">Prazeres</span>
+              <span class="span-categ-meta">10%</span>
+              <span class="span-categ-atual">10%</span>
+            </div>
+            <div class="categorias-item">
+              <span class="span-categ-descricao">Conhecimento</span>
+              <span class="span-categ-meta">5%</span>
+              <span class="span-categ-atual">5%</span>
+            </div>
+          </div>
+          <div class="categorias-grafico">
+            Gráfico aqui
+          </div>
+        </div>
+      </section>
     </section>
 
-    <section class="categorias-container">
-      <div class="categorias">
-        <div class="categorias-lista">
-          <div class="categorias-item">
-            <span class="span-categ-descricao">Categoria</span>
-            <span class="span-categ-meta">Meta</span>
-            <span class="span-categ-atual">Atual</span>
-          </div>
-          <div class="categorias-item">
-            <span class="span-categ-descricao">Investimentos</span>
-            <span class="span-categ-meta">25%</span>
-            <span class="span-categ-atual">15%</span>
-          </div>
-          <div class="categorias-item">
-            <span class="span-categ-descricao">Custos Fixos</span>
-            <span class="span-categ-meta">40%</span>
-            <span class="span-categ-atual">50%</span>
-          </div>
-          <div class="categorias-item">
-            <span class="span-categ-descricao">Conforto</span>
-            <span class="span-categ-meta">10%</span>
-            <span class="span-categ-atual">10%</span>
-          </div>
-          <div class="categorias-item">
-            <span class="span-categ-descricao">Curto/Médio Prazo</span>
-            <span class="span-categ-meta">10%</span>
-            <span class="span-categ-atual">10%</span>
-          </div>
-          <div class="categorias-item">
-            <span class="span-categ-descricao">Prazeres</span>
-            <span class="span-categ-meta">10%</span>
-            <span class="span-categ-atual">10%</span>
-          </div>
-          <div class="categorias-item">
-            <span class="span-categ-descricao">Conhecimento</span>
-            <span class="span-categ-meta">5%</span>
-            <span class="span-categ-atual">5%</span>
-          </div>
-        </div>
-
-        <div class="categorias-grafico">
-          Gráfico aqui
-        </div>
+    <section class="content-section" id="content-transactions">
+      <div class="title-container">
+        <h1 class="title">Lançamentos</h1>
       </div>
+
+      <button>+ Novo lançamento</button>
+
+      <div class="filter-container">
+        <h2>Filtros</h2>
+        <span>Todos</span>
+        <span>Categoria</span>
+        <span>Período</span>
+      </div>
+
+      <div class="transactions">
+        <span>04/09/2026</span>
+
+        <div><span>Salário</span> <span>Salário</span> <span>+</span> <span>R$ 10.000</span></div>
+        <div><span>Restaurante</span> <span>Lazer</span> <span>+</span> <span>R$ 10.000</span></div>
+        <div><span>Selic</span> <span>Investimento</span> <span>+</span> <span>R$ 10.000</span></div>
+        <div><span>Mercado</span> <span>Custo Fixo</span> <span>+</span> <span>R$ 10.000</span></div>
+      </div>
+
+      <span class="detail"></span>
+
     </section>
 
 
