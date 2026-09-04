@@ -1,4 +1,4 @@
-.aside-container {
+aside {
   width: 180px;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -15,7 +15,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.nav ul li {
+.logo {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: brown;
+}
+
+aside ul li {
   /* background-color: rgba(0, 0, 255, 0.123); */
   padding: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -24,6 +30,6 @@
 .nav-item a {
   text-decoration: none;
   color: black;
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: normal;
 }
