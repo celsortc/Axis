@@ -37,10 +37,6 @@
   border-radius: 10px;
 }
 
-.categorias-container {
-  height: 80vh;
-}
-
 .categorias {
   display: flex;
   justify-content: space-between;
