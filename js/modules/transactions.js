@@ -13,6 +13,7 @@ export default function transactionsTab() {
 
   function showForm() {
     updateCategory();
+    todayDate();
     btnLancamento.classList.add("active");
     forms.classList.add("active");
     document
@@ -83,5 +84,13 @@ export default function transactionsTab() {
         opt.disabled = true;
       }
     });
+  }
+
+  function todayDate() {
+    const todayInput = document.querySelector("input[data-today]");
+
+    const today = new Date().toISOString().split("T")[0];
+
+    todayInput.value = today;
   }
 }
