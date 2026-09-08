@@ -5,7 +5,7 @@ export default function transactionsTab() {
   const btnSalvar = document.querySelector(".btn-salvar");
   const forms = document.querySelector(".formulario-transactions");
   const transactionList = document.querySelector(".transactions-list");
-  const idNow = 0;
+  let idNow = 0;
 
   btnLancamento.addEventListener("click", showForm);
   btnSalvar.addEventListener("click", (e) => {
