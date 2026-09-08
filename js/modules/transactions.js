@@ -5,6 +5,7 @@ export default function transactionsTab() {
   const btnSalvar = document.querySelector(".btn-salvar");
   const forms = document.querySelector(".formulario-transactions");
   const transactionList = document.querySelector(".transactions-list");
+  const idNow = 0;
 
   btnLancamento.addEventListener("click", showForm);
   btnSalvar.addEventListener("click", (e) => {
@@ -30,20 +31,19 @@ export default function transactionsTab() {
     const formsTipo = document.getElementById("tipo-forms").value;
     let symbol;
 
-    if (formsTipo !== "entrada") {
+    if (formsTipo !== "income") {
       symbol = "-";
     } else symbol = "+";
-    const tipoTransacao = symbol === "-" ? "expense" : "income";
-
+    idNow += 1;
     const novaTransacao = {
+      id: idNow,
+      tipo: formsTipo,
       descricao: formsDescricao,
       categoria: formsCategoria,
       valor: formsValor,
       op: symbol,
-      tipo: tipoTransacao,
       data: formsData,
     };
-    console.log(typeof +(novaTransacao.op + novaTransacao.valor));
 
     transactions.push(novaTransacao);
     showData();
