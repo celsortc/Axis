@@ -50,6 +50,12 @@ export default function transactionsTab() {
     forms.reset();
     updateCategory();
     todayDate();
+    organizeTransactionsByDate();
+  }
+
+  function organizeTransactionsByDate() {
+    const groupedByDate = Object.groupBy(transactions, (item) => item.data);
+    console.log(groupedByDate);
   }
 
   function showData(symbolClass) {
