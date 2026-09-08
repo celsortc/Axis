@@ -8,6 +8,7 @@
   flex-direction: row;
   gap: 16px;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .formulario-transactions.active {
@@ -68,7 +69,7 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-.btn-cadastro {
+.btn-salvar {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
@@ -148,10 +149,10 @@
   align-items: center;
 }
 
-.income {
+.transaction-value:has(.income) {
   color: #1f8b24; /* Verde para entradas */
 }
-.expense {
+.transaction-value:has(.expense) {
   color: red;
 }
 

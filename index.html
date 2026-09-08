@@ -115,6 +115,7 @@
             <select name="categorias-forms" id="categorias-forms">
               <option value="custo-fixo">Custo Fixo</option>
               <option value="investimentos">Investimentos</option>
+              <option value="salario">Salário</option>
               <option value="lazer">Lazer</option>
             </select>
           </div>
@@ -124,7 +125,12 @@
             <input type="text" name="valor-forms" id="valor-forms">
           </div>
 
-          <button class="btn-cadastro" type="submit">Cadastrar</button>
+          <div class="input-campo">
+            <label for="data-forms">Data da Transação</label>
+            <input type="date" id="data-forms" name="data-forms">
+          </div>
+
+          <button class="btn-salvar" type="submit">Salvar</button>
         </form>
 
         <div class="filter-container">
