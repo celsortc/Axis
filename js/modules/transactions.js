@@ -1,9 +1,10 @@
-export default function transactions() {
+const transactions = [];
+
+export default function transactionsTab() {
   const btnLancamento = document.querySelector(".btn-lancamento");
   const btnSalvar = document.querySelector(".btn-salvar");
   const forms = document.querySelector(".formulario-transactions");
   const transactionList = document.querySelector(".transactions-list");
-  const transactions = [];
 
   btnLancamento.addEventListener("click", showForm);
   btnSalvar.addEventListener("click", (e) => {
@@ -11,8 +12,12 @@ export default function transactions() {
   });
 
   function showForm() {
+    updateCategory();
     btnLancamento.classList.add("active");
     forms.classList.add("active");
+    document
+      .getElementById("tipo-forms")
+      .addEventListener("change", updateCategory);
   }
 
   function saveData(e) {
@@ -22,7 +27,6 @@ export default function transactions() {
     const formsValor = document.getElementById("valor-forms").value;
     const formsData = document.getElementById("data-forms").value;
     let symbol;
-    let symbolClass;
 
     if (formsCategoria !== "salario") {
       symbol = "-";
@@ -61,27 +65,23 @@ export default function transactions() {
 
       transactionList.appendChild(li);
     });
+  }
 
-    // const li = document.createElement("li");
-    // const spanDescricao = document.createElement("span");
-    // spanDescricao.innerText = newTransaction.descricao;
-    // spanDescricao.classList.add("transaction-title");
+  function updateCategory() {
+    const tipo = document.getElementById("tipo-forms").value;
+    //Categorys select
+    const CategorySelect = document.getElementById("categorias-forms");
+    console.log(tipo);
+    const options = CategorySelect.querySelectorAll("option[data-type]");
 
-    // const spanCategoria = document.createElement("span");
-    // spanCategoria.innerText = newTransaction.categoria;
-    // spanCategoria.classList.add("transaction-category");
-
-    // const spanValor = document.createElement("span");
-    // spanValor.appendChild(spanSymbol);
-    // spanValor.innerText += ` R$ ${newTransaction.valor},00`;
-    // spanValor.classList.add("transaction-value");
-
-    // const elementos = [spanDescricao, spanCategoria, spanValor];
-    // elementos.forEach((elemento) => {
-    //   li.appendChild(elemento);
-    // });
-
-    // li.classList.add("transaction-item");
-    // transactionList.appendChild(li);
+    options.forEach((opt) => {
+      if (opt.dataset.type === tipo) {
+        opt.hidden = false;
+        opt.disabled = false;
+      } else {
+        opt.hidden = true;
+        opt.disabled = true;
+      }
+    });
   }
 }

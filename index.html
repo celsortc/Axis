@@ -16,7 +16,7 @@
 
   <aside>
     <div class="logo-container">
-      <span class="logo">Axis</span>
+      <span class="logo"><a href="index.html">Axis</a></span>
     </div>
     <nav>
       <ul>
@@ -105,6 +105,15 @@
         <button class="btn-lancamento">+ Novo lançamento</button>
 
         <form action="" class="formulario-transactions">
+
+          <div class="input-campo">
+            <label for="tipo-forms">Tipo</label>
+            <select name="tipo-forms" id="tipo-forms">
+              <option value="entrada" data-tipo="select-tipo" selected>Entrada</option>
+              <option value="saida" data-tipo="select-tipo">Saída</option>
+            </select>
+          </div>
+
           <div class="input-campo">
             <label for="descricao-forms">Descrição</label>
             <input type="text" name="descricao-forms" id="descricao-forms">
@@ -113,10 +122,17 @@
           <div class="input-campo">
             <label for="categorias-forms">Categoria</label>
             <select name="categorias-forms" id="categorias-forms">
-              <option value="custo-fixo">Custo Fixo</option>
-              <option value="investimentos">Investimentos</option>
-              <option value="salario">Salário</option>
-              <option value="lazer">Lazer</option>
+              <option value="" disabled selected>Selecione</option>
+
+
+              <!-- Opções em caso de tipo Entrada -->
+              <option value="salario" data-type="entrada">Salário</option>
+              <option value="rendaExtra" data-type="entrada">Renda Extra</option>
+
+              <!-- Opções em caso de tipo Saída -->
+              <option value="custo-fixo" data-type="saida">Custo Fixo</option>
+              <option value="investimentos" data-type="saida">Investimentos</option>
+              <option value="lazer" data-type="saida">Lazer</option>
             </select>
           </div>
 

@@ -1,5 +1,5 @@
 import nav from "./modules/nav.js";
-import transactions from "./modules/transactions.js";
+import transactionsTab from "./modules/transactions.js";
 
 nav();
-transactions();
+transactionsTab();
