@@ -27,9 +27,10 @@ export default function transactionsTab() {
     const formsCategoria = document.getElementById("categorias-forms").value;
     const formsValor = document.getElementById("valor-forms").value;
     const formsData = document.getElementById("data-forms").value;
+    const formsTipo = document.getElementById("tipo-forms").value;
     let symbol;
 
-    if (formsCategoria !== "salario") {
+    if (formsTipo !== "entrada") {
       symbol = "-";
     } else symbol = "+";
     const tipoTransacao = symbol === "-" ? "expense" : "income";
@@ -47,6 +48,8 @@ export default function transactionsTab() {
     transactions.push(novaTransacao);
     showData();
     forms.reset();
+    updateCategory();
+    todayDate();
   }
 
   function showData(symbolClass) {
