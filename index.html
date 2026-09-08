@@ -106,13 +106,13 @@
 
         <form action="" class="formulario-transactions">
           <div class="input-campo">
-            <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao">
+            <label for="descricao-forms">Descrição</label>
+            <input type="text" name="descricao-forms" id="descricao-forms">
           </div>
 
           <div class="input-campo">
-            <label for="categorias">Categoria</label>
-            <select name="categorias" id="categorias">
+            <label for="categorias-forms">Categoria</label>
+            <select name="categorias-forms" id="categorias-forms">
               <option value="custo-fixo">Custo Fixo</option>
               <option value="investimentos">Investimentos</option>
               <option value="lazer">Lazer</option>
@@ -120,8 +120,8 @@
           </div>
 
           <div class="input-campo">
-            <label for="valor">Valor</label>
-            <input type="text" name="valor" id="valor">
+            <label for="valor-forms">Valor</label>
+            <input type="text" name="valor-forms" id="valor-forms">
           </div>
 
           <button class="btn-cadastro" type="submit">Cadastrar</button>
@@ -140,40 +140,28 @@
 
           <span class="transaction-date">04/09/2026</span>
 
-          <div class="transactions-list">
-            <div class="transaction-row">
+          <ul class="transactions-list">
+            <li class="transaction-item">
               <span class="transaction-title">Educação</span>
               <span class="transaction-category">Educação</span>
-              <div class="value-wrapper">
-                <span class="transaction-symbol">+</span>
-                <span class="transaction-value">R$ 10.000</span>
-              </div>
-            </div>
-            <div class="transaction-row">
+              <span class="transaction-value"><span class="income">+</span> R$ 10.000</span>
+            </li>
+            <li class="transaction-item">
               <span class="transaction-title">Restaurante</span>
               <span class="transaction-category">Lazer</span>
-              <div class="value-wrapper">
-                <span class="transaction-symbol">-</span>
-                <span class="transaction-value">R$ 100,00</span>
-              </div>
-            </div>
-            <div class="transaction-row">
+              <span class="transaction-value"><span class="expense">-</span> R$ 100,00</span>
+            </li>
+            <li class="transaction-item">
               <span class="transaction-title">Selic</span>
               <span class="transaction-category">Investimento</span>
-              <div class="value-wrapper">
-                <span class="transaction-symbol">-</span>
-                <span class="transaction-value">R$ 500,00</span>
-              </div>
-            </div>
-            <div class="transaction-row">
+              <span class="transaction-value"><span class="expense">-</span> R$ 500,00</span>
+            </li>
+            <li class="transaction-item">
               <span class="transaction-title">Mercado</span>
               <span class="transaction-category">Custo Fixo</span>
-              <div class="value-wrapper">
-                <span class="transaction-symbol">-</span>
-                <span class="transaction-value">R$ 200,00</span>
-              </div>
-            </div>
-          </div>
+              <span class="transaction-value"><span class="expense">-</span> R$ 200,00</span>
+            </li>
+          </ul>
 
         </div>
 

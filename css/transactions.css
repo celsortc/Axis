@@ -118,41 +118,27 @@
   gap: 5px;
 }
 
-.transactions-list div:not(:last-child) {
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 10px; */
-}
-
 .transactions-list div {
   padding: 10px;
 }
 
-.transaction-row {
+.transaction-item {
   box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: grid;
-  grid-template-columns: 1fr 130px 1fr;
+  grid-template-columns: 1fr minmax(130px, 1fr) 1fr;
   align-items: center;
   padding: 12px 16px;
   column-gap: 12px;
-}
-
-.value-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.transaction-row span {
   font-size: 1.25rem;
 }
 
-/* .transaction-symbol,
 .transaction-value {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  text-align: right;
-} */
+  margin-right: 40px;
+}
 
 .transaction-category {
   text-align: center;
@@ -162,13 +148,14 @@
   align-items: center;
 }
 
-.transaction-symbol {
-  text-align: right;
-  font-weight: bold;
-  color: #2e7d32; /* Verde para entradas */
+.income {
+  color: #1f8b24; /* Verde para entradas */
+}
+.expense {
+  color: red;
 }
 
-.transaction-value {
-  font-weight: 500;
-  text-align: right;
+.income,
+.expense {
+  margin-right: 10px;
 }
