@@ -40,7 +40,7 @@ export default function transactionsTab() {
       tipo: formsTipo,
       descricao: formsDescricao,
       categoria: formsCategoria,
-      valor: formsValor,
+      valor: +formsValor,
       op: symbol,
       data: formsData,
     };
