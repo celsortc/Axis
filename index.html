@@ -104,6 +104,28 @@
       <section class="transactions-section">
         <button class="btn-lancamento">+ Novo lançamento</button>
 
+        <form action="" class="formulario-transactions">
+          <div class="input-campo">
+            <label for="descricao">Descrição</label>
+            <input type="text" name="descricao" id="descricao">
+          </div>
+
+          <div class="input-campo">
+            <label for="categorias">Categoria</label>
+            <select name="categorias" id="categorias">
+              <option value="custo-fixo">Custo Fixo</option>
+              <option value="investimentos">Investimentos</option>
+              <option value="lazer">Lazer</option>
+            </select>
+          </div>
+
+          <div class="input-campo">
+            <label for="valor">Valor</label>
+            <input type="text" name="valor" id="valor">
+          </div>
+
+        </form>
+
         <div class="filter-container">
           <h2>Histórico</h2>
           <div class="filters">
