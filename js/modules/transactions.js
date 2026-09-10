@@ -53,16 +53,18 @@ export default function transactionsTab() {
     organizeTransactionsByDate();
   }
 
+
+//Função que agrupa as transações por data
   function organizeTransactionsByDate() {
     const groupedByDate = Object.groupBy(transactions, (item) => item.data);
-    console.log(groupedByDate);
+    return groupedByDate;
   }
 
-  function showData(symbolClass) {
-    console.log(transactions);
-
+  function showData() {
     transactionList.innerHTML = "";
-
+    
+    const groupedByDate = organizeTransactionsByDate()
+    
     transactions.forEach((transaction) => {
       const li = document.createElement("li");
       li.classList.add("transaction-item");
@@ -95,6 +97,8 @@ export default function transactionsTab() {
     });
   }
 
+
+// Função auxiliar para exibir a data atual no placeholder do formulário
   function todayDate() {
     const todayInput = document.querySelector("input[data-today]");
 
