@@ -53,8 +53,7 @@ export default function transactionsTab() {
     organizeTransactionsByDate();
   }
 
-
-//Função que agrupa as transações por data
+  //Função que agrupa as transações por data
   function organizeTransactionsByDate() {
     const groupedByDate = Object.groupBy(transactions, (item) => item.data);
     return groupedByDate;
@@ -62,21 +61,28 @@ export default function transactionsTab() {
 
   function showData() {
     transactionList.innerHTML = "";
-    
-    const groupedByDate = organizeTransactionsByDate()
-    
-    transactions.forEach((transaction) => {
-      const li = document.createElement("li");
-      li.classList.add("transaction-item");
 
-      li.innerHTML = `
-      <span class="transaction-title">${transaction.descricao}</span>
-      <span class="transaction-category">${transaction.categoria}</span>
-      <span class="transaction-value"><span class="${transaction.tipo}">${transaction.op}\t</span>${transaction.valor}</span>
+    const groupedByDate = organizeTransactionsByDate();
+
+    Object.entries(groupedByDate).forEach(([date, transactions]) => {
+      const datesShow = document.createElement("span");
+      datesShow.innerText = date;
+      transactionList.appendChild(datesShow);
+      transactions.forEach((i) => {
+        const li = document.createElement("li");
+        li.classList.add("transaction-item");
+
+        li.innerHTML = `
+      <span class="transaction-title">${i.descricao}</span>
+      <span class="transaction-category">${i.categoria}</span>
+      <span class="transaction-value"><span class="${i.tipo}">${i.op}\t</span>${i.valor}</span>
       `;
 
-      transactionList.appendChild(li);
+        transactionList.appendChild(li);
+      });
     });
+
+    transactions.forEach((transaction) => {});
   }
 
   function updateCategory() {
@@ -97,8 +103,7 @@ export default function transactionsTab() {
     });
   }
 
-
-// Função auxiliar para exibir a data atual no placeholder do formulário
+  // Função auxiliar para exibir a data atual no placeholder do formulário
   function todayDate() {
     const todayInput = document.querySelector("input[data-today]");
 
