@@ -1,3 +1,5 @@
+import { cleanDate } from "./format.js";
+
 const transactions = [];
 
 export default function transactionsTab() {
@@ -62,12 +64,17 @@ export default function transactionsTab() {
   function showData() {
     transactionList.innerHTML = "";
 
+    //Percorre o a array, define a primeira chave como date e mostra transactions
+    //organizados por data
     const groupedByDate = organizeTransactionsByDate();
+    console.log(groupedByDate);
 
     Object.entries(groupedByDate).forEach(([date, transactions]) => {
       const datesShow = document.createElement("span");
-      datesShow.innerText = date;
+      datesShow.classList.add("transaction-date");
+      datesShow.innerText = cleanDate(date);
       transactionList.appendChild(datesShow);
+
       transactions.forEach((i) => {
         const li = document.createElement("li");
         li.classList.add("transaction-item");
@@ -89,7 +96,6 @@ export default function transactionsTab() {
     const tipo = document.getElementById("tipo-forms").value;
     //Categorys select
     const CategorySelect = document.getElementById("categorias-forms");
-    console.log(tipo);
     const options = CategorySelect.querySelectorAll("option[data-type]");
 
     options.forEach((opt) => {
