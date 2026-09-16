@@ -67,27 +67,52 @@ export default function transactionsTab() {
     //Percorre o a array, define a primeira chave como date e mostra transactions
     //organizados por data
     const groupedByDate = organizeTransactionsByDate();
-    console.log(groupedByDate);
 
-    Object.entries(groupedByDate).forEach(([date, transactions]) => {
-      const datesShow = document.createElement("span");
-      datesShow.classList.add("transaction-date");
-      datesShow.innerText = cleanDate(date);
-      transactionList.appendChild(datesShow);
+    Object.entries(groupedByDate)
+      //destructuring o object.entries
+      //organiza as transações pela data (primeiro valor do array)
+      .sort(([dateA], [dateB]) => {
+        return new Date(dateB) - new Date(dateA);
+      })
+      .forEach(([date, transactions]) => {
+        const datesShow = document.createElement("span");
+        datesShow.classList.add("transaction-date");
+        datesShow.innerText = cleanDate(date);
+        transactionList.appendChild(datesShow);
 
-      transactions.forEach((i) => {
-        const li = document.createElement("li");
-        li.classList.add("transaction-item");
+        transactions.forEach((i) => {
+          const li = document.createElement("li");
+          li.classList.add("transaction-item");
 
-        li.innerHTML = `
+          li.innerHTML = `
       <span class="transaction-title">${i.descricao}</span>
       <span class="transaction-category">${i.categoria}</span>
       <span class="transaction-value"><span class="${i.tipo}">${i.op}\t</span>${i.valor}</span>
       `;
 
-        transactionList.appendChild(li);
+          transactionList.appendChild(li);
+        });
       });
-    });
+
+    // Object.entries(groupedByDate).forEach(([date, transactions]) => {
+    //   const datesShow = document.createElement("span");
+    //   datesShow.classList.add("transaction-date");
+    //   datesShow.innerText = cleanDate(date);
+    //   transactionList.appendChild(datesShow);
+
+    //   transactions.forEach((i) => {
+    //     const li = document.createElement("li");
+    //     li.classList.add("transaction-item");
+
+    //     li.innerHTML = `
+    //   <span class="transaction-title">${i.descricao}</span>
+    //   <span class="transaction-category">${i.categoria}</span>
+    //   <span class="transaction-value"><span class="${i.tipo}">${i.op}\t</span>${i.valor}</span>
+    //   `;
+
+    //     transactionList.appendChild(li);
+    //   });
+    // });
 
     transactions.forEach((transaction) => {});
   }
