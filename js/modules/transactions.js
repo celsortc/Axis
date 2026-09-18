@@ -1,4 +1,4 @@
-import { cleanDate } from "./format.js";
+import { cleanDate, cleanCategoryName } from "./format.js";
 
 const transactions = [];
 
@@ -24,10 +24,11 @@ export default function transactionsTab() {
       .addEventListener("change", updateCategory);
   }
 
+  const formsCategoria = document.getElementById("categorias-forms");
+
   function saveData(e) {
     e.preventDefault();
     const formsDescricao = document.getElementById("descricao-forms").value;
-    const formsCategoria = document.getElementById("categorias-forms").value;
     const formsValor = document.getElementById("valor-forms").value;
     const formsData = document.getElementById("data-forms").value;
     const formsTipo = document.getElementById("tipo-forms").value;
@@ -41,7 +42,7 @@ export default function transactionsTab() {
       id: idNow,
       tipo: formsTipo,
       descricao: formsDescricao,
-      categoria: formsCategoria,
+      categoria: formsCategoria.value,
       valor: +formsValor,
       op: symbol,
       data: formsData,
@@ -60,6 +61,14 @@ export default function transactionsTab() {
     const groupedByDate = Object.groupBy(transactions, (item) => item.data);
     return groupedByDate;
   }
+
+  const categoriasFormatadas = {
+    salario: "Salário",
+    rendaExtra: "Renda Extra",
+    "custo-fixo": "Custo Fixo",
+    investimentos: "Investimentos",
+    lazer: "Lazer",
+  };
 
   function showData() {
     transactionList.innerHTML = "";
@@ -81,40 +90,21 @@ export default function transactionsTab() {
         transactionList.appendChild(datesShow);
 
         transactions.forEach((i) => {
+          const nomeCategoria =
+            categoriasFormatadas[i.categoria] || i.categoria;
+
           const li = document.createElement("li");
           li.classList.add("transaction-item");
 
           li.innerHTML = `
       <span class="transaction-title">${i.descricao}</span>
-      <span class="transaction-category">${i.categoria}</span>
+      <span class="transaction-category">${nomeCategoria}</span>
       <span class="transaction-value"><span class="${i.tipo}">${i.op}\t</span>${i.valor}</span>
       `;
 
           transactionList.appendChild(li);
         });
       });
-
-    // Object.entries(groupedByDate).forEach(([date, transactions]) => {
-    //   const datesShow = document.createElement("span");
-    //   datesShow.classList.add("transaction-date");
-    //   datesShow.innerText = cleanDate(date);
-    //   transactionList.appendChild(datesShow);
-
-    //   transactions.forEach((i) => {
-    //     const li = document.createElement("li");
-    //     li.classList.add("transaction-item");
-
-    //     li.innerHTML = `
-    //   <span class="transaction-title">${i.descricao}</span>
-    //   <span class="transaction-category">${i.categoria}</span>
-    //   <span class="transaction-value"><span class="${i.tipo}">${i.op}\t</span>${i.valor}</span>
-    //   `;
-
-    //     transactionList.appendChild(li);
-    //   });
-    // });
-
-    transactions.forEach((transaction) => {});
   }
 
   function updateCategory() {

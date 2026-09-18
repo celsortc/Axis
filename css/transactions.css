@@ -106,6 +106,19 @@
   cursor: pointer;
 }
 
+.transactions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 960px;
+}
+
 .transaction-date {
   font-size: 1.15rem;
   font-weight: 500;
@@ -114,12 +127,6 @@
   margin: 15px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: block;
-}
-
-.transactions-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 
 .transactions-list div {
