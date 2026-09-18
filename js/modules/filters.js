@@ -1,20 +1,38 @@
-export default function filters() {
-  const filters = document.querySelectorAll(".filters [data-dropdown]");
+import { transactions } from "./transactions.js";
 
-  filters.forEach((e) => {
+export default function filters() {
+  const filtersLabel = document.querySelectorAll(".filters [data-dropdown]");
+
+  filtersLabel.forEach((e) => {
     console.log(e);
 
     e.addEventListener("click", activeBtn);
   });
 
   function activeBtn(event) {
-    const currentFilterSpan = event.currentTarget;
+    console.log(event.target.classList.contains("labelDropdown"));
 
-    filters.forEach((btn) => {
-      if (btn !== currentFilterSpan) {
+    //Verifica se o click foi na checkbox
+    if (event.target.closest(".dropdown-menu")) {
+      return;
+    }
+
+    const currentFilter = event.currentTarget;
+
+    currentFilter.classList.toggle("active");
+  }
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest("[data-dropdown")) {
+      removeActive();
+    }
+  });
+
+  function removeActive(cFilter = null) {
+    filtersLabel.forEach((btn) => {
+      if (btn !== cFilter) {
         btn.classList.remove("active");
       }
     });
-    event.currentTarget.classList.toggle("active");
   }
 }

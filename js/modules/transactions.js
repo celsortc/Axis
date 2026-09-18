@@ -2,6 +2,8 @@ import { cleanDate } from "./format.js";
 import filters from "./filters.js";
 filters();
 
+export { transactions };
+
 const transactions = [];
 
 export default function transactionsTab() {
