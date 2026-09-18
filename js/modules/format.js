@@ -7,7 +7,3 @@ export function cleanDate(newDate) {
 
   return cleanDate;
 }
-
-export function cleanCategoryName(category) {
-  return category + "show";
-}

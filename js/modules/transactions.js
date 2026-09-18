@@ -1,4 +1,6 @@
-import { cleanDate, cleanCategoryName } from "./format.js";
+import { cleanDate } from "./format.js";
+import filters from "./filters.js";
+filters();
 
 const transactions = [];
 
