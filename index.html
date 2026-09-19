@@ -153,25 +153,31 @@
           <h2>Histórico</h2>
           <ul class="filters">
             <li data-dropdown>
-              <span>Tipo</span>
-              <ul class="dropdown-menu">
-                <label for="allType" class="labelDropdown">
-                  <input type="checkbox" name="" class="typeCheckbox" id="allType" checked>
-                  <span>Todos</span>
-                </label>
-                <label for="incomeType" class="labelDropdown">
-                  <input type="checkbox" name="" class="typeCheckbox" id="incomeType" checked>
-                  <span>Entradas</span>
-                </label>
-                <label for="expenseType" class="labelDropdown">
-                  <input type="checkbox" name="" class="typeCheckbox" id="expenseType" checked>
-                  Saídas
-                </label>
+              <span data-target="dropdown-tipo" class="filter-btn">Tipo</span>
+              <ul class="dropdown-menu" id="dropdown-tipo">
+                <li>
+                  <label for="allType" class="dropdownOptionGroup">
+                    <input data-typefilter="all" type="checkbox" name="" class="typeCheckbox" id="allType" checked>
+                    <span>Todos</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="incomeType" class="dropdownOptionGroup">
+                    <input data-typefilter="income" type="checkbox" name="" class="typeCheckbox" id="incomeType">
+                    <span>Entradas</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="expenseType" class="dropdownOptionGroup">
+                    <input data-typefilter="expense" type="checkbox" name="" class="typeCheckbox" id="expenseType">
+                    <span>Saídas</span>
+                  </label>
+                </li>
               </ul>
             </li>
             <li data-dropdown>
-              <span>Categoria</span>
-              <ul class="dropdown-menu">
+              <span data-target="dropdown-category" class="filter-btn">Categoria</span>
+              <ul class="dropdown-menu" id="dropdown-category">
                 <li>Todos</li>
                 <li>Salário</li>
                 <li>Renda Extra</li>
@@ -180,8 +186,8 @@
               </ul>
             </li>
             <li data-dropdown>
-              <span>Período</span>
-              <ul class="dropdown-menu">
+              <span data-target="dropdown-period" class="filter-btn">Período</span>
+              <ul class="dropdown-menu" id="dropdown-period">
                 <li>Todos</li>
                 <li>Hoje</li>
                 <li>Este mês</li>

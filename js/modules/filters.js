@@ -1,38 +1,66 @@
-import { transactions } from "./transactions.js";
+// import { transactions } from "./transactions.js";
 
 export default function filters() {
-  const filtersLabel = document.querySelectorAll(".filters [data-dropdown]");
+  const filterBtns = document.querySelectorAll("[data-dropdown] .filter-btn");
 
-  filtersLabel.forEach((e) => {
-    console.log(e);
-
+  filterBtns.forEach((e) => {
     e.addEventListener("click", activeBtn);
   });
 
+  // const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
+
+  // typeCheckboxes.forEach((checkBox) => {
+  //   checkBox.addEventListener("change", filterTransactions);
+  // });
+
+  // const filterTypeOptions = document.querySelectorAll(".dropdown-menu li");
+
+  // filterTypeOptions.forEach((option) => {
+  //   option.addEventListener("click", () => {
+  //     filterTransactions(option.dataset.typeFilter);
+  //   });
+  // });
+
   function activeBtn(event) {
-    console.log(event.target.classList.contains("labelDropdown"));
+    // Encontra o menu associado ao botão clicado
+    const currentDropdown = this.closest("li").querySelector(".dropdown-menu");
+    removeActive(currentDropdown);
 
-    //Verifica se o click foi na checkbox
-    if (event.target.closest(".dropdown-menu")) {
-      return;
-    }
+    //pega o valor do  data-dropdown da categoria de filtro clicado (tipo, categoria ou período)
+    const targetId = this.dataset.target;
 
-    const currentFilter = event.currentTarget;
+    //busca a ul (dropdown menu) com ID identico ao targetID
+    const dropdown = document.getElementById(targetId);
 
-    currentFilter.classList.toggle("active");
+    dropdown.classList.toggle("active");
   }
 
   document.addEventListener("click", (event) => {
-    if (!event.target.closest("[data-dropdown")) {
+    if (!event.target.closest("[data-dropdown]")) {
       removeActive();
     }
   });
 
-  function removeActive(cFilter = null) {
-    filtersLabel.forEach((btn) => {
-      if (btn !== cFilter) {
-        btn.classList.remove("active");
+  function removeActive(cDropdown = null) {
+    // Busca TODOS os dropdowns da página
+    const allDropdowns = document.querySelectorAll(".dropdown-menu");
+    allDropdowns.forEach((dropdown) => {
+      if (dropdown !== cDropdown) {
+        dropdown.classList.remove("active");
       }
     });
   }
+
+  // function filterTransactions(event) {
+  //   // const filtered = transactions.filter((transaction) => {
+  //   const checkbox = event.currentTarget;
+
+  //   console.log(checkbox.dataset.typefilter);
+  //   console.log(checkbox.checked);
+
+  //   // return transaction.tipo === type;
+  //   // });
+
+  //   console.log(filtered);
+  // }
 }

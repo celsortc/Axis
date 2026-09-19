@@ -1,10 +1,8 @@
 import { cleanDate } from "./format.js";
-import filters from "./filters.js";
-filters();
-
-export { transactions };
 
 const transactions = [];
+
+export { transactions };
 
 export default function transactionsTab() {
   const btnLancamento = document.querySelector(".btn-lancamento");
@@ -61,8 +59,8 @@ export default function transactionsTab() {
   }
 
   //Função que agrupa as transações por data
-  function organizeTransactionsByDate() {
-    const groupedByDate = Object.groupBy(transactions, (item) => item.data);
+  function organizeTransactionsByDate(data) {
+    const groupedByDate = Object.groupBy(data, (item) => item.data);
     return groupedByDate;
   }
 
@@ -74,12 +72,12 @@ export default function transactionsTab() {
     lazer: "Lazer",
   };
 
-  function showData() {
+  function showData(data = transactions) {
     transactionList.innerHTML = "";
 
     //Percorre o a array, define a primeira chave como date e mostra transactions
     //organizados por data
-    const groupedByDate = organizeTransactionsByDate();
+    const groupedByDate = organizeTransactionsByDate(data);
 
     Object.entries(groupedByDate)
       //destructuring o object.entries
