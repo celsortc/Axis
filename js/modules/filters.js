@@ -1,4 +1,4 @@
-// import { transactions } from "./transactions.js";
+import { transactions } from "./transactions.js";
 
 export default function filters() {
   const filterBtns = document.querySelectorAll("[data-dropdown] .filter-btn");
@@ -6,20 +6,6 @@ export default function filters() {
   filterBtns.forEach((e) => {
     e.addEventListener("click", activeBtn);
   });
-
-  // const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
-
-  // typeCheckboxes.forEach((checkBox) => {
-  //   checkBox.addEventListener("change", filterTransactions);
-  // });
-
-  // const filterTypeOptions = document.querySelectorAll(".dropdown-menu li");
-
-  // filterTypeOptions.forEach((option) => {
-  //   option.addEventListener("click", () => {
-  //     filterTransactions(option.dataset.typeFilter);
-  //   });
-  // });
 
   function activeBtn(event) {
     // Encontra o menu associado ao botão clicado
@@ -51,16 +37,37 @@ export default function filters() {
     });
   }
 
-  // function filterTransactions(event) {
-  //   // const filtered = transactions.filter((transaction) => {
-  //   const checkbox = event.currentTarget;
+  const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
 
-  //   console.log(checkbox.dataset.typefilter);
-  //   console.log(checkbox.checked);
+  typeCheckboxes.forEach((checkBox) => {
+    checkBox.addEventListener("change", filterTransactions);
+  });
 
-  //   // return transaction.tipo === type;
-  //   // });
+  // filterTypeOptions.forEach((option) => {
+  //   option.addEventListener("click", () => {
+  //     filterTransactions(option.dataset.typeFilter);
+  //     console.log(option.dataset.typeFilter);
+  //   });
+  // });
 
-  //   console.log(filtered);
-  // }
+  function filterTransactions(event) {
+    const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
+    const operacoes = [];
+    typeCheckboxes.forEach((cb) => {
+      if (cb.checked === true) {
+        operacoes.push(cb.dataset.typefilter);
+      }
+    });
+    console.log(operacoes);
+
+    const checkbox = event.currentTarget;
+
+    // console.log(checkbox.dataset.typefilter);
+    // console.log(checkbox.checked);
+
+    // const filtered = transactions.filter((transaction) => {
+    //   return transaction.tipo === type;
+    // });
+    // console.log("qqisso:", filtered);
+  }
 }
