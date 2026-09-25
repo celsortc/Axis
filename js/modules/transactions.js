@@ -55,7 +55,6 @@ export default function transactionsTab() {
     forms.reset();
     updateCategory();
     todayDate();
-    organizeTransactionsByDate();
   }
 
   //Função que agrupa as transações por data
@@ -134,4 +133,6 @@ export default function transactionsTab() {
 
     todayInput.value = today;
   }
+
+  return showData;
 }

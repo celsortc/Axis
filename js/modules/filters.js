@@ -1,6 +1,6 @@
 import { transactions } from "./transactions.js";
 
-export default function filters() {
+export default function filters(showFunc) {
   const filterBtns = document.querySelectorAll("[data-dropdown] .filter-btn");
 
   filterBtns.forEach((e) => {
@@ -43,13 +43,6 @@ export default function filters() {
     checkBox.addEventListener("change", filterTransactions);
   });
 
-  // filterTypeOptions.forEach((option) => {
-  //   option.addEventListener("click", () => {
-  //     filterTransactions(option.dataset.typeFilter);
-  //     console.log(option.dataset.typeFilter);
-  //   });
-  // });
-
   function filterTransactions(event) {
     const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
     const operacoes = [];
@@ -58,16 +51,11 @@ export default function filters() {
         operacoes.push(cb.dataset.typefilter);
       }
     });
-    console.log(operacoes);
 
-    const checkbox = event.currentTarget;
+    const filtered = transactions.filter((transaction) => {
+      return operacoes.includes(transaction.tipo);
+    });
 
-    // console.log(checkbox.dataset.typefilter);
-    // console.log(checkbox.checked);
-
-    // const filtered = transactions.filter((transaction) => {
-    //   return transaction.tipo === type;
-    // });
-    // console.log("qqisso:", filtered);
+    showFunc(filtered);
   }
 }
