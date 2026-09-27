@@ -144,12 +144,19 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
   position: relative;
+  z-index: 1;
 }
 
 .transaction-item:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   border-color: #cbd5e1;
+  z-index: 2;
+}
+
+/* Garante que o card com o menu aberto fique por cima de todos os outros cards */
+.transaction-item:has(.action-dropdown-menu.active) {
+  z-index: 50;
 }
 
 .transaction-info {
