@@ -126,6 +126,8 @@ export default function transactionsTab() {
         opt.disabled = true;
       }
     });
+
+    CategorySelect.value = "";
   }
 
   // Função auxiliar para exibir a data atual no placeholder do formulário
