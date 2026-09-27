@@ -59,7 +59,8 @@ export default function transactionsTab() {
 
     transactions.push(novaTransacao);
     saveTransactions(transactions);
-    showData();
+    // Avisa o módulo de filtros para re-renderizar com os filtros ativos
+    document.dispatchEvent(new CustomEvent("axis:transactionchange"));
     forms.reset();
     document.getElementById("data-forms").value = formsData;
     updateCategory();
@@ -214,7 +215,8 @@ export default function transactionsTab() {
     if (index === -1) return;
     transactions.splice(index, 1);
     saveTransactions(transactions);
-    showData();
+    // Avisa o módulo de filtros para re-renderizar com os filtros ativos
+    document.dispatchEvent(new CustomEvent("axis:transactionchange"));
   }
 
   return showData;
