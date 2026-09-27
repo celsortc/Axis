@@ -97,13 +97,26 @@ export default function filters(showFunc) {
       }
     });
 
-    // 3. Período selecionado (Todos / Hoje / Este mês)
+    // 3. Período selecionado
     const selectedPeriod =
       document.querySelector(".periodRadio:checked")?.dataset.periodfilter ||
       "all";
 
-    const today = new Date().toLocaleDateString("en-CA");
+    const now = new Date();
+    const today = now.toLocaleDateString("en-CA");
+    const currentYear = String(now.getFullYear());
     const currentYearMonth = today.slice(0, 7);
+
+    const d7 = new Date(now);
+    d7.setDate(now.getDate() - 7);
+    const sevenDaysAgo = d7.toLocaleDateString("en-CA");
+
+    const d30 = new Date(now);
+    d30.setDate(now.getDate() - 30);
+    const thirtyDaysAgo = d30.toLocaleDateString("en-CA");
+
+    const prevMonthDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    const prevYearMonth = prevMonthDate.toLocaleDateString("en-CA").slice(0, 7);
 
     // Filtra cruzando tipo, categoria E período
     const filtered = transactions.filter((transaction) => {
@@ -117,7 +130,23 @@ export default function filters(showFunc) {
         matchPeriodo = transaction.data === today;
       } else if (selectedPeriod === "thisMonth") {
         matchPeriodo =
-          transaction.data && transaction.data.startsWith(currentYearMonth);
+          Boolean(transaction.data) && transaction.data.startsWith(currentYearMonth);
+      } else if (selectedPeriod === "lastMonth") {
+        matchPeriodo =
+          Boolean(transaction.data) && transaction.data.startsWith(prevYearMonth);
+      } else if (selectedPeriod === "last7Days") {
+        matchPeriodo =
+          Boolean(transaction.data) &&
+          transaction.data >= sevenDaysAgo &&
+          transaction.data <= today;
+      } else if (selectedPeriod === "last30Days") {
+        matchPeriodo =
+          Boolean(transaction.data) &&
+          transaction.data >= thirtyDaysAgo &&
+          transaction.data <= today;
+      } else if (selectedPeriod === "thisYear") {
+        matchPeriodo =
+          Boolean(transaction.data) && transaction.data.startsWith(currentYear);
       }
 
       return matchTipo && matchCategoria && matchPeriodo;
@@ -125,4 +154,7 @@ export default function filters(showFunc) {
 
     showFunc(filtered);
   }
+
+  // Aplica os filtros padrão logo na inicialização
+  applyFilters();
 }
