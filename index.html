@@ -233,9 +233,24 @@
             <li data-dropdown>
               <span data-target="dropdown-period" class="filter-btn">Período</span>
               <ul class="dropdown-menu" id="dropdown-period">
-                <li>Todos</li>
-                <li>Hoje</li>
-                <li>Este mês</li>
+                <li>
+                  <label for="periodAll" class="dropdownOptionGroup">
+                    <input data-periodfilter="all" type="radio" name="periodFilter" class="periodRadio" id="periodAll" checked>
+                    <span>Todos</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="periodToday" class="dropdownOptionGroup">
+                    <input data-periodfilter="today" type="radio" name="periodFilter" class="periodRadio" id="periodToday">
+                    <span>Hoje</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="periodThisMonth" class="dropdownOptionGroup">
+                    <input data-periodfilter="thisMonth" type="radio" name="periodFilter" class="periodRadio" id="periodThisMonth">
+                    <span>Este mês</span>
+                  </label>
+                </li>
               </ul>
             </li>
           </ul>

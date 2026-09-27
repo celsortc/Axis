@@ -46,12 +46,18 @@ export default function filters(showFunc) {
     '.categoryCheckbox:not([data-categoryfilter="all"])'
   );
 
+  const periodRadios = document.querySelectorAll(".periodRadio");
+
   typeCheckboxes.forEach((checkBox) => {
     checkBox.addEventListener("change", applyFilters);
   });
 
   categoryCheckboxes.forEach((checkBox) => {
     checkBox.addEventListener("change", handleCategoryChange);
+  });
+
+  periodRadios.forEach((radio) => {
+    radio.addEventListener("change", applyFilters);
   });
 
   function handleCategoryChange(event) {
@@ -91,13 +97,30 @@ export default function filters(showFunc) {
       }
     });
 
-    // Filtra cruzando tipo E categoria
+    // 3. Período selecionado (Todos / Hoje / Este mês)
+    const selectedPeriod =
+      document.querySelector(".periodRadio:checked")?.dataset.periodfilter ||
+      "all";
+
+    const today = new Date().toLocaleDateString("en-CA");
+    const currentYearMonth = today.slice(0, 7);
+
+    // Filtra cruzando tipo, categoria E período
     const filtered = transactions.filter((transaction) => {
       const matchTipo = operacoes.includes(transaction.tipo);
       const matchCategoria = categoriasSelecionadas.includes(
         transaction.categoria
       );
-      return matchTipo && matchCategoria;
+
+      let matchPeriodo = true;
+      if (selectedPeriod === "today") {
+        matchPeriodo = transaction.data === today;
+      } else if (selectedPeriod === "thisMonth") {
+        matchPeriodo =
+          transaction.data && transaction.data.startsWith(currentYearMonth);
+      }
+
+      return matchTipo && matchCategoria && matchPeriodo;
     });
 
     showFunc(filtered);

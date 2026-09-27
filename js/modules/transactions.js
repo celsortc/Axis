@@ -137,7 +137,7 @@ export default function transactionsTab() {
   function todayDate() {
     const todayInput = document.querySelector("input[data-today]");
 
-    const today = new Date().toISOString().split("T")[0];
+    const today = new Date().toLocaleDateString("en-CA");
 
     todayInput.value = today;
   }
