@@ -18,7 +18,10 @@ export default function transactionsTab() {
 
   function showForm() {
     updateCategory();
-    todayDate();
+    const dataInput = document.getElementById("data-forms");
+    if (!dataInput.value) {
+      todayDate();
+    }
     btnLancamento.classList.add("active");
     forms.classList.add("active");
     document
@@ -53,8 +56,8 @@ export default function transactionsTab() {
     transactions.push(novaTransacao);
     showData();
     forms.reset();
+    document.getElementById("data-forms").value = formsData;
     updateCategory();
-    todayDate();
   }
 
   //Função que agrupa as transações por data
