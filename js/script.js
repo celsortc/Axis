@@ -4,6 +4,5 @@ import filters from "./modules/filters.js";
 
 nav();
 const show = transactionsTab();
-console.log(show);
 
 filters(show);

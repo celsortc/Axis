@@ -124,15 +124,17 @@
             <select name="categorias-forms" id="categorias-forms">
               <option value="" disabled selected>Selecione</option>
 
-
               <!-- Opções em caso de tipo Entrada -->
               <option value="salario" data-type="income">Salário</option>
               <option value="rendaExtra" data-type="income">Renda Extra</option>
 
               <!-- Opções em caso de tipo Saída -->
-              <option value="custo-fixo" data-type="expense">Custo Fixo</option>
+              <option value="custosFixos" data-type="expense">Custos Fixos</option>
               <option value="investimentos" data-type="expense">Investimentos</option>
-              <option value="lazer" data-type="expense">Lazer</option>
+              <option value="conforto" data-type="expense">Conforto</option>
+              <option value="metas" data-type="expense">Metas</option>
+              <option value="prazeres" data-type="expense">Prazeres</option>
+              <option value="conhecimento" data-type="expense">Conhecimento</option>
             </select>
           </div>
 
@@ -172,11 +174,60 @@
             <li data-dropdown>
               <span data-target="dropdown-category" class="filter-btn">Categoria</span>
               <ul class="dropdown-menu" id="dropdown-category">
-                <li>Todos</li>
-                <li>Salário</li>
-                <li>Renda Extra</li>
-                <li>Investimento</li>
-                <li>Custo Fixo</li>
+                <li>
+                  <label for="allCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="all" type="checkbox" class="categoryCheckbox" id="allCategory">
+                    <span>Todos</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="salarioCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="salario" type="checkbox" class="categoryCheckbox" id="salarioCategory">
+                    <span>Salário</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="rendaExtraCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="rendaExtra" type="checkbox" class="categoryCheckbox" id="rendaExtraCategory">
+                    <span>Renda Extra</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="confortoCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="conforto" type="checkbox" class="categoryCheckbox" id="confortoCategory">
+                    <span>Conforto</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="investimentosCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="investimentos" type="checkbox" class="categoryCheckbox" id="investimentosCategory">
+                    <span>Investimentos</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="custosFixosCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="custosFixos" type="checkbox" class="categoryCheckbox" id="custosFixosCategory">
+                    <span>Custos Fixos</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="metasCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="metas" type="checkbox" class="categoryCheckbox" id="metasCategory">
+                    <span>Metas</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="prazeresCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="prazeres" type="checkbox" class="categoryCheckbox" id="prazeresCategory">
+                    <span>Prazeres</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="conhecimentoCategory" class="dropdownOptionGroup">
+                    <input data-categoryfilter="conhecimento" type="checkbox" class="categoryCheckbox" id="conhecimentoCategory">
+                    <span>Conhecimento</span>
+                  </label>
+                </li>
               </ul>
             </li>
             <li data-dropdown>

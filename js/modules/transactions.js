@@ -66,9 +66,12 @@ export default function transactionsTab() {
   const categoriasFormatadas = {
     salario: "Salário",
     rendaExtra: "Renda Extra",
-    "custo-fixo": "Custo Fixo",
+    custosFixos: "Custos Fixos",
     investimentos: "Investimentos",
-    lazer: "Lazer",
+    conforto: "Conforto",
+    metas: "Metas",
+    prazeres: "Prazeres",
+    conhecimento: "Conhecimento",
   };
 
   function showData(data = transactions) {

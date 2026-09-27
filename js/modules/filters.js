@@ -58,4 +58,49 @@ export default function filters(showFunc) {
 
     showFunc(filtered);
   }
+
+  // Lógica do Filtro de Categoria
+  const categoryCheckboxes = document.querySelectorAll(".categoryCheckbox");
+  const allCategoryCheckbox = document.querySelector(
+    '[data-categoryfilter="all"]',
+  );
+  const individualCategoryCheckboxes = document.querySelectorAll(
+    '.categoryCheckbox:not([data-categoryfilter="all"])',
+  );
+
+  categoryCheckboxes.forEach((checkBox) => {
+    checkBox.addEventListener("change", filterCategories);
+  });
+
+  function filterCategories(event) {
+    const changed = event.target;
+
+    // Se clicou no checkbox "Todos"
+    if (changed === allCategoryCheckbox) {
+      individualCategoryCheckboxes.forEach((cb) => {
+        cb.checked = allCategoryCheckbox.checked;
+      });
+    } else {
+      // Se clicou em um individual, sincroniza o "Todos"
+      const allChecked = Array.from(individualCategoryCheckboxes).every(
+        (cb) => cb.checked,
+      );
+
+      allCategoryCheckbox.checked = allChecked;
+    }
+
+    // Coleta as categorias que estão marcadas
+    const categoriasSelecionadas = [];
+    individualCategoryCheckboxes.forEach((cb) => {
+      if (cb.checked) {
+        categoriasSelecionadas.push(cb.dataset.categoryfilter);
+      }
+    });
+
+    const filtered = transactions.filter((transaction) => {
+      return categoriasSelecionadas.includes(transaction.categoria);
+    });
+
+    showFunc(filtered);
+  }
 }
