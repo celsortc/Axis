@@ -1,6 +1,6 @@
 import { transactions } from "./transactions.js";
 
-export default function filters() {
+export default function filters(showFunc) {
   const filterBtns = document.querySelectorAll("[data-dropdown] .filter-btn");
 
   filterBtns.forEach((e) => {
@@ -38,36 +38,68 @@ export default function filters() {
   }
 
   const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
+  const categoryCheckboxes = document.querySelectorAll(".categoryCheckbox");
+  const allCategoryCheckbox = document.querySelector(
+    '[data-categoryfilter="all"]'
+  );
+  const individualCategoryCheckboxes = document.querySelectorAll(
+    '.categoryCheckbox:not([data-categoryfilter="all"])'
+  );
 
   typeCheckboxes.forEach((checkBox) => {
-    checkBox.addEventListener("change", filterTransactions);
+    checkBox.addEventListener("change", applyFilters);
   });
 
-  // filterTypeOptions.forEach((option) => {
-  //   option.addEventListener("click", () => {
-  //     filterTransactions(option.dataset.typeFilter);
-  //     console.log(option.dataset.typeFilter);
-  //   });
-  // });
+  categoryCheckboxes.forEach((checkBox) => {
+    checkBox.addEventListener("change", handleCategoryChange);
+  });
 
-  function filterTransactions(event) {
-    const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
+  function handleCategoryChange(event) {
+    const changed = event.target;
+
+    // Se clicou no checkbox "Todos"
+    if (changed === allCategoryCheckbox) {
+      individualCategoryCheckboxes.forEach((cb) => {
+        cb.checked = allCategoryCheckbox.checked;
+      });
+    } else {
+      // Se clicou em um individual, sincroniza o "Todos"
+      const allChecked = Array.from(individualCategoryCheckboxes).every(
+        (cb) => cb.checked
+      );
+
+      allCategoryCheckbox.checked = allChecked;
+    }
+
+    applyFilters();
+  }
+
+  function applyFilters() {
+    // 1. Tipos selecionados (Entradas / Saídas)
     const operacoes = [];
     typeCheckboxes.forEach((cb) => {
-      if (cb.checked === true) {
+      if (cb.checked) {
         operacoes.push(cb.dataset.typefilter);
       }
     });
-    console.log(operacoes);
 
-    const checkbox = event.currentTarget;
+    // 2. Categorias selecionadas
+    const categoriasSelecionadas = [];
+    individualCategoryCheckboxes.forEach((cb) => {
+      if (cb.checked) {
+        categoriasSelecionadas.push(cb.dataset.categoryfilter);
+      }
+    });
 
-    // console.log(checkbox.dataset.typefilter);
-    // console.log(checkbox.checked);
+    // Filtra cruzando tipo E categoria
+    const filtered = transactions.filter((transaction) => {
+      const matchTipo = operacoes.includes(transaction.tipo);
+      const matchCategoria = categoriasSelecionadas.includes(
+        transaction.categoria
+      );
+      return matchTipo && matchCategoria;
+    });
 
-    // const filtered = transactions.filter((transaction) => {
-    //   return transaction.tipo === type;
-    // });
-    // console.log("qqisso:", filtered);
+    showFunc(filtered);
   }
 }

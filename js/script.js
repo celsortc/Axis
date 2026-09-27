@@ -3,5 +3,6 @@ import transactionsTab from "./modules/transactions.js";
 import filters from "./modules/filters.js";
 
 nav();
-transactionsTab();
-filters();
+const show = transactionsTab();
+
+filters(show);

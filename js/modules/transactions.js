@@ -18,7 +18,10 @@ export default function transactionsTab() {
 
   function showForm() {
     updateCategory();
-    todayDate();
+    const dataInput = document.getElementById("data-forms");
+    if (!dataInput.value) {
+      todayDate();
+    }
     btnLancamento.classList.add("active");
     forms.classList.add("active");
     document
@@ -53,9 +56,8 @@ export default function transactionsTab() {
     transactions.push(novaTransacao);
     showData();
     forms.reset();
+    document.getElementById("data-forms").value = formsData;
     updateCategory();
-    todayDate();
-    organizeTransactionsByDate();
   }
 
   //Função que agrupa as transações por data
@@ -67,9 +69,12 @@ export default function transactionsTab() {
   const categoriasFormatadas = {
     salario: "Salário",
     rendaExtra: "Renda Extra",
-    "custo-fixo": "Custo Fixo",
+    custosFixos: "Custos Fixos",
     investimentos: "Investimentos",
-    lazer: "Lazer",
+    conforto: "Conforto",
+    metas: "Metas",
+    prazeres: "Prazeres",
+    conhecimento: "Conhecimento",
   };
 
   function showData(data = transactions) {
@@ -124,6 +129,8 @@ export default function transactionsTab() {
         opt.disabled = true;
       }
     });
+
+    CategorySelect.value = "";
   }
 
   // Função auxiliar para exibir a data atual no placeholder do formulário
@@ -134,4 +141,6 @@ export default function transactionsTab() {
 
     todayInput.value = today;
   }
+
+  return showData;
 }
