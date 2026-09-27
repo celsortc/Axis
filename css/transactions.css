@@ -103,16 +103,8 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: end;
-  margin-top: 40px;
-}
-
-.filters span:hover {
-  color: blue;
-  cursor: pointer;
-}
-
-.filters span:hover + .dropdown-menu {
-  display: block;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .transactions {
@@ -124,58 +116,173 @@
 .transactions-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 960px;
+  gap: 10px;
+  width: 100%;
+  max-width: 900px;
+  list-style: none;
 }
 
 .transaction-date {
-  font-size: 1.15rem;
-  font-weight: 500;
-  padding: 10px;
-  /* border: 1px solid black; */
-  margin: 15px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  padding: 14px 4px 6px 4px;
+  margin-top: 10px;
+  border-bottom: 1px solid #f1f5f9;
   display: block;
-}
-
-.transactions-list div {
-  padding: 10px;
+  letter-spacing: 0.025em;
 }
 
 .transaction-item {
-  box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 1fr minmax(130px, 1fr) 1fr;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  column-gap: 12px;
-  font-size: 1.15rem;
+  padding: 14px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.transaction-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: #cbd5e1;
+  z-index: 2;
+}
+
+/* Garante que o card com o menu aberto fique por cima de todos os outros cards */
+.transaction-item:has(.action-dropdown-menu.active) {
+  z-index: 50;
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.transaction-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.transaction-category-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.transaction-actions-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
 }
 
 .transaction-value {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-right: 40px;
-}
-
-.transaction-category {
-  text-align: center;
-}
-.transaction-title {
-  display: flex;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
   align-items: center;
 }
 
-.transaction-value:has(.income) {
-  color: #1f8b24; /* Verde para entradas */
-}
-.transaction-value:has(.expense) {
-  color: red;
+.transaction-value.income {
+  color: #16a34a;
 }
 
-.income,
-.expense {
-  margin-right: 10px;
+.transaction-value.expense {
+  color: #dc2626;
+}
+
+.transaction-sign {
+  margin-right: 4px;
+}
+
+.transaction-menu-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.btn-more-options {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-more-options:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.action-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+  z-index: 100;
+}
+
+.action-dropdown-menu.active {
+  display: flex;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  font-size: 0.825rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  text-align: left;
+}
+
+.edit-btn {
+  color: #334155;
+}
+
+.edit-btn:hover {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.delete-btn {
+  color: #ef4444;
+}
+
+.delete-btn:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
 }
