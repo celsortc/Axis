@@ -1,4 +1,4 @@
-import { cleanDate } from "./format.js";
+import { cleanDate, formatCurrency } from "./format.js";
 
 const transactions = [];
 
@@ -104,15 +104,67 @@ export default function transactionsTab() {
           li.classList.add("transaction-item");
 
           li.innerHTML = `
-      <span class="transaction-title">${i.descricao}</span>
-      <span class="transaction-category">${nomeCategoria}</span>
-      <span class="transaction-value"><span class="${i.tipo}">${i.op}\t</span>${i.valor}</span>
-      `;
+            <div class="transaction-info">
+              <span class="transaction-title">${i.descricao}</span>
+              <span class="transaction-category-badge">${nomeCategoria}</span>
+            </div>
+            <div class="transaction-actions-container">
+              <span class="transaction-value ${i.tipo}">
+                <span class="transaction-sign">${i.op}</span> ${formatCurrency(i.valor)}
+              </span>
+              <div class="transaction-menu-wrapper" data-action-menu>
+                <button class="btn-more-options" type="button" aria-label="Opções da transação" title="Mais opções">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="5" r="2"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                    <circle cx="12" cy="19" r="2"></circle>
+                  </svg>
+                </button>
+                <div class="action-dropdown-menu">
+                  <button class="action-btn edit-btn" type="button">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    <span>Editar</span>
+                  </button>
+                  <button class="action-btn delete-btn" type="button">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    <span>Excluir</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
 
           transactionList.appendChild(li);
         });
       });
   }
+
+  // Gerenciador de clique para abrir/fechar o menu de 3 pontinhos
+  document.addEventListener("click", (e) => {
+    const btnMore = e.target.closest(".btn-more-options");
+    const activeMenu = document.querySelector(".action-dropdown-menu.active");
+
+    if (btnMore) {
+      const menuWrapper = btnMore.closest("[data-action-menu]");
+      const menu = menuWrapper.querySelector(".action-dropdown-menu");
+
+      if (activeMenu && activeMenu !== menu) {
+        activeMenu.classList.remove("active");
+      }
+      menu.classList.toggle("active");
+      return;
+    }
+
+    if (activeMenu && !e.target.closest("[data-action-menu]")) {
+      activeMenu.classList.remove("active");
+    }
+  });
 
   function updateCategory() {
     const tipo = document.getElementById("tipo-forms").value;
