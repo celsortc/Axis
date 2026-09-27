@@ -190,11 +190,51 @@ Issue #1: **Backlog — evolução do MVP de lançamentos e Overview**
 ### Overview e regras financeiras
 - [ ] Substituir valores fixos do Overview por cálculos em tempo real.
 - [ ] Implementar as metas definidas somando 100%.
-- [ ] Persistência de dados (localStorage).
+- [x] Persistência de dados (localStorage) — `js/modules/storage.js`.
+- [x] Botão Excluir funcional (remove do array + localStorage + re-renderiza).
+- [x] Fix: ao salvar/excluir uma transação, os filtros ativos são respeitados (event-driven via `axis:transactionchange`).
 
 ---
 
-## 10. Princípios para futuras decisões técnicas
+## 10. Arquitetura de módulos JS (estado atual)
+
+```
+js/
+  script.js                → entrypoint: inicializa nav, transactions e filters
+  modules/
+    nav.js                 → navegação entre abas
+    format.js              → cleanDate(), formatCurrency()
+    storage.js             → loadTransactions(), saveTransactions(), clearTransactions()
+    transactions.js        → lógica de lançamentos (salvar, deletar, renderizar cards)
+    filters.js             → filtros de tipo, categoria e período; escuta "axis:transactionchange"
+```
+
+### Fluxo de dados
+
+```
+localStorage
+     ↓ (ao iniciar)
+transactions[]   ←──────────────────────────────────────────────┐
+     │                                                           │
+     ↓ (ao salvar/deletar)                                      │
+saveTransactions()                                              │
+     +                                                          │
+dispatchEvent("axis:transactionchange")                         │
+     ↓                                                          │
+filters.js → applyFilters() → showFunc(filtered) → renderiza   │
+     │                                                          │
+     └── ao alterar filtros (radio/checkbox) → applyFilters() ──┘
+```
+
+### Regra de comunicação entre módulos
+
+- `transactions.js` **não importa** `filters.js` (evita dependência circular).
+- Quando uma transação muda, `transactions.js` dispara `new CustomEvent("axis:transactionchange")`.
+- `filters.js` escuta esse evento e re-aplica os filtros ativos.
+
+---
+
+## 11. Princípios para futuras decisões técnicas
 
 ### Simplicidade primeiro
 Preferir:
