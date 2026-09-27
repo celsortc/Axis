@@ -38,41 +38,23 @@ export default function filters(showFunc) {
   }
 
   const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
-
-  typeCheckboxes.forEach((checkBox) => {
-    checkBox.addEventListener("change", filterTransactions);
-  });
-
-  function filterTransactions(event) {
-    const typeCheckboxes = document.querySelectorAll(".typeCheckbox");
-    const operacoes = [];
-    typeCheckboxes.forEach((cb) => {
-      if (cb.checked === true) {
-        operacoes.push(cb.dataset.typefilter);
-      }
-    });
-
-    const filtered = transactions.filter((transaction) => {
-      return operacoes.includes(transaction.tipo);
-    });
-
-    showFunc(filtered);
-  }
-
-  // Lógica do Filtro de Categoria
   const categoryCheckboxes = document.querySelectorAll(".categoryCheckbox");
   const allCategoryCheckbox = document.querySelector(
-    '[data-categoryfilter="all"]',
+    '[data-categoryfilter="all"]'
   );
   const individualCategoryCheckboxes = document.querySelectorAll(
-    '.categoryCheckbox:not([data-categoryfilter="all"])',
+    '.categoryCheckbox:not([data-categoryfilter="all"])'
   );
 
-  categoryCheckboxes.forEach((checkBox) => {
-    checkBox.addEventListener("change", filterCategories);
+  typeCheckboxes.forEach((checkBox) => {
+    checkBox.addEventListener("change", applyFilters);
   });
 
-  function filterCategories(event) {
+  categoryCheckboxes.forEach((checkBox) => {
+    checkBox.addEventListener("change", handleCategoryChange);
+  });
+
+  function handleCategoryChange(event) {
     const changed = event.target;
 
     // Se clicou no checkbox "Todos"
@@ -83,13 +65,25 @@ export default function filters(showFunc) {
     } else {
       // Se clicou em um individual, sincroniza o "Todos"
       const allChecked = Array.from(individualCategoryCheckboxes).every(
-        (cb) => cb.checked,
+        (cb) => cb.checked
       );
 
       allCategoryCheckbox.checked = allChecked;
     }
 
-    // Coleta as categorias que estão marcadas
+    applyFilters();
+  }
+
+  function applyFilters() {
+    // 1. Tipos selecionados (Entradas / Saídas)
+    const operacoes = [];
+    typeCheckboxes.forEach((cb) => {
+      if (cb.checked) {
+        operacoes.push(cb.dataset.typefilter);
+      }
+    });
+
+    // 2. Categorias selecionadas
     const categoriasSelecionadas = [];
     individualCategoryCheckboxes.forEach((cb) => {
       if (cb.checked) {
@@ -97,8 +91,13 @@ export default function filters(showFunc) {
       }
     });
 
+    // Filtra cruzando tipo E categoria
     const filtered = transactions.filter((transaction) => {
-      return categoriasSelecionadas.includes(transaction.categoria);
+      const matchTipo = operacoes.includes(transaction.tipo);
+      const matchCategoria = categoriasSelecionadas.includes(
+        transaction.categoria
+      );
+      return matchTipo && matchCategoria;
     });
 
     showFunc(filtered);
