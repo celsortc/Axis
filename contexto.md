@@ -54,34 +54,17 @@ Não incluir inicialmente:
 
 As metas padrão são:
 
-| Meta | Percentual |
-| :--- | :--- |
-| Investimentos | 25% |
-| Custos Fixos | 30% |
-| Conforto | 15% |
-| Curto/Médio Prazo | 15% |
-| Prazeres | 10% |
-| Conhecimento | 5% |
-| **Total** | **100%** |
+| Meta              | Percentual |
+| :---------------- | :--------- |
+| Investimentos     | 25%        |
+| Custos Fixos      | 30%        |
+| Conforto          | 15%        |
+| Curto/Médio Prazo | 15%        |
+| Prazeres          | 10%        |
+| Conhecimento      | 5%         |
+| **Total**         | **100%**   |
 
-A soma dos percentuais deve ser **exatamente 100%**.
-
-### Categoria x Meta
-
-Esses conceitos são diferentes:
-
-- **Categoria:** o que foi gasto (ex: Alimentação, Aluguel).
-- **Meta:** para qual objetivo financeiro aquele dinheiro foi destinado (ex: Custos Fixos).
-
-Exemplo conceitual:
-- Categoria = Alimentação
-- Meta = Custos Fixos
-
-Um investimento reduz o **saldo disponível**, mas não reduz o **patrimônio**.
-
-O patrimônio está fora do MVP atual e não deve ser colocado na interface sem uma decisão explícita.
-
----
+A soma dos percentuais deve ser **exatamente 100%**
 
 ## 5. Ordem de desenvolvimento
 
@@ -101,28 +84,20 @@ Na prática, o projeto atual está evoluindo a estrutura do frontend, lançament
 
 ## 6. Forma de trabalho com o usuário
 
-O usuário quer aprender desenvolvendo, e não simplesmente receber o código pronto.
+O usuário quer aprender desenvolvendo e precisa entender tudo que entra no projeto.
 
 ### Regra principal
 
-**O usuário escreve o código. A IA orienta, revisa e ajuda a destravar.**
+**A IA pode escrever o código e fazer commits, desde que explique claramente o que foi alterado e como o código funciona.**
 
-Não implementar alterações automaticamente, a menos que o usuário peça explicitamente algo como:
+Ao implementar uma mudança:
 
-- "faz para mim"
-- "implemente isso"
-- "pode alterar o código"
+1. Explicar o objetivo e a solução adotada.
+2. Mostrar o trecho exato que foi modificado.
+3. Explicar as partes importantes em linguagem prática.
+4. Tirar dúvidas e ajustar a explicação conforme necessário.
 
-Quando o usuário estiver resolvendo um exercício:
-
-1. Explicar o objetivo.
-2. Dar pistas graduais.
-3. Deixar o usuário tentar.
-4. Revisar o código enviado.
-5. Apontar o que está correto.
-6. Apontar o problema específico.
-7. Dar a próxima pista.
-8. Só entregar a solução completa se o usuário pedir ou estiver realmente travado.
+Quando o usuário estiver resolvendo um exercício, a IA pode manter a abordagem de pistas graduais se ele pedir para tentar primeiro.
 
 O usuário prefere receber **vários próximos passos de uma vez**, normalmente algo como 4–6 passos, em vez de receber apenas um comando por mensagem.
 
@@ -179,6 +154,7 @@ Commits devem ser atômicos e focados em uma tarefa específica.
 Issue #1: **Backlog — evolução do MVP de lançamentos e Overview**
 
 ### Lançamentos e filtros
+
 - [x] Filtro de Tipo (Entradas / Saídas com seleção múltipla).
 - [x] Filtro de Categoria (Salário, Renda Extra, Conforto, Investimentos, Custos Fixos, Metas, Prazeres, Conhecimento + opção "Todos" inteligente).
 - [x] Filtro de Período (Últimos 7 dias como padrão, Hoje, Este mês, Mês passado, Últimos 30 dias, Este ano, Todos).
@@ -188,6 +164,7 @@ Issue #1: **Backlog — evolução do MVP de lançamentos e Overview**
 - [x] Cards modernos de lançamentos com menu de 3 pontinhos (Editar / Excluir).
 
 ### Overview e regras financeiras
+
 - [ ] Substituir valores fixos do Overview por cálculos em tempo real.
 - [ ] Implementar as metas definidas somando 100%.
 - [ ] Persistência de dados (localStorage).
@@ -197,7 +174,9 @@ Issue #1: **Backlog — evolução do MVP de lançamentos e Overview**
 ## 10. Princípios para futuras decisões técnicas
 
 ### Simplicidade primeiro
+
 Preferir:
+
 - funções pequenas;
 - responsabilidades claras;
 - módulos simples (ES Modules);
@@ -205,16 +184,15 @@ Preferir:
 - mudanças incrementais.
 
 Evitar:
+
 - abstrações prematuras;
 - bibliotecas desnecessárias;
 - sistemas complexos antes de existir necessidade real.
 
 ### Regras financeiras vêm antes da implementação
+
 Quando uma mudança afetar dinheiro, metas, categorias, saldo ou cálculos:
+
 1. esclarecer a regra;
 2. definir o comportamento esperado;
 3. só então pensar na implementação.
-
-### Não confundir categoria com meta
-- Categoria responde: *"O que foi gasto?"*
-- Meta responde: *"Para qual objetivo financeiro esse dinheiro foi destinado?"*
