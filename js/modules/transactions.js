@@ -8,7 +8,6 @@ export { transactions };
 
 export default function transactionsTab() {
   const btnLancamento = document.querySelector(".btn-lancamento");
-  const btnSalvar = document.querySelector(".btn-salvar");
   const forms = document.querySelector(".formulario-transactions");
   const transactionList = document.querySelector(".transactions-list");
 
@@ -16,9 +15,7 @@ export default function transactionsTab() {
   let idNow = transactions.reduce((max, t) => Math.max(max, t.id ?? 0), 0);
 
   btnLancamento.addEventListener("click", showForm);
-  btnSalvar.addEventListener("click", (e) => {
-    saveData(e);
-  });
+  forms.addEventListener("submit", saveData);
 
   function showForm() {
     updateCategory();
@@ -37,10 +34,34 @@ export default function transactionsTab() {
 
   function saveData(e) {
     e.preventDefault();
-    const formsDescricao = document.getElementById("descricao-forms").value;
-    const formsValor = document.getElementById("valor-forms").value;
+    const descricaoInput = document.getElementById("descricao-forms");
+    const valorInput = document.getElementById("valor-forms");
+    const formsDescricao = descricaoInput.value.trim();
+    const formsValor = Number(valorInput.value.replace(",", "."));
     const formsData = document.getElementById("data-forms").value;
     const formsTipo = document.getElementById("tipo-forms").value;
+
+    if (!formsDescricao) {
+      descricaoInput.setCustomValidity("Informe uma descrição para o lançamento.");
+      descricaoInput.reportValidity();
+      descricaoInput.setCustomValidity("");
+      return;
+    }
+
+    if (!formsCategoria.value) {
+      formsCategoria.setCustomValidity("Selecione uma categoria.");
+      formsCategoria.reportValidity();
+      formsCategoria.setCustomValidity("");
+      return;
+    }
+
+    if (!Number.isFinite(formsValor) || formsValor <= 0) {
+      valorInput.setCustomValidity("Informe um valor maior que zero.");
+      valorInput.reportValidity();
+      valorInput.setCustomValidity("");
+      return;
+    }
+
     let symbol;
 
     if (formsTipo !== "income") {
@@ -52,7 +73,7 @@ export default function transactionsTab() {
       tipo: formsTipo,
       descricao: formsDescricao,
       categoria: formsCategoria.value,
-      valor: +formsValor,
+      valor: formsValor,
       op: symbol,
       data: formsData,
     };
