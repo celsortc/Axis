@@ -1,6 +1,8 @@
 import { cleanDate, formatCurrency } from "./format.js";
+import { loadTransactions, saveTransactions } from "./storage.js";
 
-const transactions = [];
+// Inicializa o array com o que estiver salvo no localStorage
+const transactions = loadTransactions();
 
 export { transactions };
 
@@ -9,7 +11,9 @@ export default function transactionsTab() {
   const btnSalvar = document.querySelector(".btn-salvar");
   const forms = document.querySelector(".formulario-transactions");
   const transactionList = document.querySelector(".transactions-list");
-  let idNow = 0;
+
+  // Garante que o próximo ID seja maior que qualquer ID já existente
+  let idNow = transactions.reduce((max, t) => Math.max(max, t.id ?? 0), 0);
 
   btnLancamento.addEventListener("click", showForm);
   btnSalvar.addEventListener("click", (e) => {
@@ -54,7 +58,9 @@ export default function transactionsTab() {
     };
 
     transactions.push(novaTransacao);
-    showData();
+    saveTransactions(transactions);
+    // Avisa o módulo de filtros para re-renderizar com os filtros ativos
+    document.dispatchEvent(new CustomEvent("axis:transactionchange"));
     forms.reset();
     document.getElementById("data-forms").value = formsData;
     updateCategory();
@@ -102,6 +108,7 @@ export default function transactionsTab() {
 
           const li = document.createElement("li");
           li.classList.add("transaction-item");
+          li.dataset.id = i.id;
 
           li.innerHTML = `
             <div class="transaction-info">
@@ -139,6 +146,11 @@ export default function transactionsTab() {
               </div>
             </div>
           `;
+
+          // Conecta o botão excluir à função de deleção
+          li.querySelector(".delete-btn").addEventListener("click", () => {
+            deleteTransaction(i.id);
+          });
 
           transactionList.appendChild(li);
         });
@@ -193,6 +205,19 @@ export default function transactionsTab() {
     const today = new Date().toLocaleDateString("en-CA");
 
     todayInput.value = today;
+  }
+
+  /**
+   * Remove uma transação pelo ID, persiste e re-renderiza.
+   * @param {number} id
+   */
+  function deleteTransaction(id) {
+    const index = transactions.findIndex((t) => t.id === id);
+    if (index === -1) return;
+    transactions.splice(index, 1);
+    saveTransactions(transactions);
+    // Avisa o módulo de filtros para re-renderizar com os filtros ativos
+    document.dispatchEvent(new CustomEvent("axis:transactionchange"));
   }
 
   return showData;

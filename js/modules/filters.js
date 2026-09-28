@@ -155,6 +155,9 @@ export default function filters(showFunc) {
     showFunc(filtered);
   }
 
+  // Re-aplica os filtros ativos sempre que uma transação for adicionada ou removida
+  document.addEventListener("axis:transactionchange", applyFilters);
+
   // Aplica os filtros padrão logo na inicialização
   applyFilters();
 }
