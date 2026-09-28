@@ -154,6 +154,7 @@ export default function transactionsTab() {
       const menuWrapper = btnMore.closest("[data-action-menu]");
       const menu = menuWrapper.querySelector(".action-dropdown-menu");
 
+      //Verifica se outro menu de outra transação está aberto.
       if (activeMenu && activeMenu !== menu) {
         activeMenu.classList.remove("active");
       }
