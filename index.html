@@ -20,34 +20,34 @@
     </div>
     <nav>
       <ul>
-        <li class="nav-item" data-target="content-overview"><a href="#">Overview</a></li>
-        <li class="nav-item" data-target="content-transactions"><a href="#">Lançamentos</a></li>
-        <li class="nav-item" data-target="content-configs"><a href="#">Configurações</a></li>
+        <li class="nav-item" data-nav="content-overview"><a href="#">Overview</a></li>
+        <li class="nav-item" data-nav="content-transactions"><a href="#">Lançamentos</a></li>
+        <li class="nav-item" data-nav="content-configs"><a href="#">Configurações</a></li>
       </ul>
     </nav>
   </aside>
 
   <main>
-    <section class="content-section" id="content-overview">
+    <section class="content-section active" id="content-overview">
       <div class="title-container">
         <h1 class="title">Overview</h1>
       </div>
       <section class="financial-summary">
         <div class="card">
-          <h2>Saldo disponível</h2>
-          <span>R$ 2.000,00</span>
+          <h2>Resultado no período</h2>
+          <span>R$ 1.000,00</span>
         </div>
         <div class="card">
-          <h2>Entradas</h2>
-          <span>R$ 1.500,00</span>
+          <h2>Receitas</h2>
+          <span class="card-incomes">R$ 1.500,00</span>
         </div>
         <div class="card">
-          <h2>Saídas</h2>
-          <span>R$ 500,00</span>
+          <h2>Despesas</h2>
+          <span class="card-expenses">R$ 500,00</span>
         </div>
         <div class="card">
-          <h2>Investimentos</h2>
-          <span>R$ 0</span>
+          <h2>Saldo em conta</h2>
+          <span>R$ 1.000,00</span>
         </div>
       </section>
       <section class="categorias-container">
@@ -96,7 +96,7 @@
       </section>
     </section>
 
-    <section class="content-section active" id="content-transactions">
+    <section class="content-section" id="content-transactions">
       <div class="title-container">
         <h1 class="title">Lançamentos</h1>
       </div>

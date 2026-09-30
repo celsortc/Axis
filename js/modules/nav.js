@@ -5,7 +5,7 @@ export default function nav() {
 
   navButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const targetId = button.getAttribute("data-target");
+      const targetId = button.getAttribute("data-nav");
 
       //Verifica se existe essa página
       if (document.getElementById(targetId)) {
