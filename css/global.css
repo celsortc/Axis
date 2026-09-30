@@ -1,3 +1,29 @@
+:root {
+  --category-salario-bg: #dcfce7;
+  --category-salario-text: #166534;
+
+  --category-renda-extra-bg: #dbeafe;
+  --category-renda-extra-text: #1d4ed8;
+
+  --category-custos-fixos-bg: #fee2e2;
+  --category-custos-fixos-text: #b91c1c;
+
+  --category-investimentos-bg: #ede9fe;
+  --category-investimentos-text: #6d28d9;
+
+  --category-conforto-bg: #fef3c7;
+  --category-conforto-text: #92400e;
+
+  --category-metas-bg: #e2e8f0;
+  --category-metas-text: #334155;
+
+  --category-prazeres-bg: #f2d9df;
+  --category-prazeres-text: #85465c;
+
+  --category-conhecimento-bg: #ffedd5;
+  --category-conhecimento-text: #c2410c;
+}
+
 * {
   padding: 0px;
   margin: 0px;
