@@ -40,10 +40,12 @@
 .card h2 {
   font-size: 0.875rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 .card span {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .card-incomes {
