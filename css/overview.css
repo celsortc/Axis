@@ -1,3 +1,7 @@
+* {
+  list-style: none;
+}
+
 .content-section {
   margin-left: 180px;
   display: none;
@@ -14,6 +18,24 @@
   justify-content: center;
   box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.05);
   border: 1px solid #e5e7eb;
+}
+
+.category-summary {
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
+}
+
+.categorySumHeader {
+  display: flex;
+  border: 1px solid blue;
+  padding: 20px;
+}
+
+.categorySummary-typeSelect {
+  display: flex;
 }
 
 .financial-summary {
