@@ -38,8 +38,43 @@
 .category-summary-header {
   display: flex;
   justify-content: space-between;
-  border: 1px solid blue;
   padding: 20px;
+}
+
+.category-summary-title {
+  font-size: 1.15rem;
+  font-weight: bolder;
+  color: black;
+}
+
+.category-chart {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+}
+
+.category-chart-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  gap: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  text-align: center;
+}
+
+.category-chart-center strong {
+  font-size: 0.85rem;
+}
+
+.category-chart-center span {
+  font-size: 0.7rem;
+  color: #666;
 }
 
 .category-item {
