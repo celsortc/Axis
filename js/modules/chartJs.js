@@ -1,10 +1,21 @@
 import { getTransactionsThisMonth } from "./overview.js";
+import { formatCurrency } from "./format.js";
+
+const categoryMonthTotal = document.getElementById("category-month-total");
 
 export default function chartJs() {
   const superficie = document.getElementById("category-doughnut");
 
   const categoryExpenseChart = new Chart(superficie, {
     type: "doughnut",
+    options: {
+      cutout: "60%",
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+    },
     data: {
       labels: [
         "Investimentos",
@@ -37,6 +48,12 @@ export default function chartJs() {
     const expensesThisMonth = transactionsThisMonth.filter((transactions) => {
       return transactions.tipo === "expense";
     });
+
+    const totalExpenses = expensesThisMonth.reduce((total, transaction) => {
+      return total + transaction.valor;
+    }, 0);
+
+    categoryMonthTotal.textContent = formatCurrency(totalExpenses);
 
     const totalsByCategory = {
       investimentos: 0,
