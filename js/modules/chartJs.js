@@ -4,6 +4,20 @@ import { formatCurrency } from "./format.js";
 const categoryMonthTotal = document.getElementById("category-month-total");
 
 export default function chartJs() {
+  const selector = document.querySelector(".category-type-selector");
+  const typeButtons = document.querySelectorAll(".category-type-button");
+
+  typeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      selector.dataset.selected = btn.dataset.type;
+
+      typeButtons.forEach((typeButton) => {
+        const isSelected = typeButton === btn;
+        typeButton.setAttribute("aria-pressed", String(isSelected));
+      });
+    });
+  });
+
   const superficie = document.getElementById("category-doughnut");
 
   const categoryExpenseChart = new Chart(superficie, {

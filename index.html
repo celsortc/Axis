@@ -55,10 +55,16 @@
 
           <div class="category-summary-header">
             <h2 class="category-summary-title">Por categorias</h2>
-            <div class="category-type-selector">
-              <button class="category-type-button category-type-button--expense" type="button">Despesas</button>
-              <button class="category-type-button category-type-button--income" type="button">Receitas</button>
+
+            <div class="category-type-selector" data-selected="expense" role="group" aria-label="Tipo de lançamento">
+              <button class="category-type-button" type="button" data-type="expense" aria-pressed="true">
+                Despesas
+              </button>
+              <button class="category-type-button" type="button" data-type="income" aria-pressed="false">
+                Receitas
+              </button>
             </div>
+
           </div>
 
           <div class="category-chart">
