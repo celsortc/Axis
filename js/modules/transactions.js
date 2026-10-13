@@ -42,7 +42,9 @@ export default function transactionsTab() {
     const formsTipo = document.getElementById("tipo-forms").value;
 
     if (!formsDescricao) {
-      descricaoInput.setCustomValidity("Informe uma descrição para o lançamento.");
+      descricaoInput.setCustomValidity(
+        "Informe uma descrição para o lançamento.",
+      );
       descricaoInput.reportValidity();
       descricaoInput.setCustomValidity("");
       return;
@@ -104,6 +106,17 @@ export default function transactionsTab() {
     conhecimento: "Conhecimento",
   };
 
+  const categoriasClasses = {
+    salario: "category-salario",
+    rendaExtra: "category-renda-extra",
+    custosFixos: "category-custos-fixos",
+    investimentos: "category-investimentos",
+    conforto: "category-conforto",
+    metas: "category-metas",
+    prazeres: "category-prazeres",
+    conhecimento: "category-conhecimento",
+  };
+
   function showData(data = transactions) {
     transactionList.innerHTML = "";
 
@@ -131,10 +144,12 @@ export default function transactionsTab() {
           li.classList.add("transaction-item");
           li.dataset.id = i.id;
 
+          const categoriaClasse = categoriasClasses[i.categoria] || "";
+
           li.innerHTML = `
             <div class="transaction-info">
               <span class="transaction-title">${i.descricao}</span>
-              <span class="transaction-category-badge">${nomeCategoria}</span>
+              <span class="transaction-category-badge ${categoriaClasse}">${nomeCategoria}</span>
             </div>
             <div class="transaction-actions-container">
               <span class="transaction-value ${i.tipo}">

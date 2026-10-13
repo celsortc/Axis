@@ -35,63 +35,82 @@
       <section class="financial-summary">
         <div class="card">
           <h2>Resultado no período</h2>
-          <span>R$ 1.000,00</span>
+          <span class="card-periodResult"></span>
         </div>
         <div class="card">
           <h2>Receitas</h2>
-          <span class="card-incomes">R$ 1.500,00</span>
+          <span class="card-incomes">NADA</span>
         </div>
         <div class="card">
           <h2>Despesas</h2>
-          <span class="card-expenses">R$ 500,00</span>
+          <span class="card-expenses"></span>
         </div>
         <div class="card">
           <h2>Saldo em conta</h2>
-          <span>R$ 1.000,00</span>
+          <span class="card-accountTotal"></span>
         </div>
       </section>
-      <section class="categorias-container">
-        <div class="categorias">
-          <div class="categorias-lista">
-            <div class="categorias-item">
-              <span class="span-categ-descricao">Categoria</span>
-              <span class="span-categ-meta">Meta</span>
-              <span class="span-categ-atual">Atual</span>
+      <section class="category-section">
+        <div class="category-summary">
+
+          <div class="category-summary-header">
+            <h2 class="category-summary-title">Por categorias</h2>
+
+            <div class="category-type-selector" data-selected="expense" role="group" aria-label="Tipo de lançamento">
+              <button class="category-type-button" type="button" data-type="expense" aria-pressed="true">
+                Despesas
+              </button>
+              <button class="category-type-button" type="button" data-type="income" aria-pressed="false">
+                Receitas
+              </button>
             </div>
-            <div class="categorias-item">
-              <span class="span-categ-descricao">Investimentos</span>
-              <span class="span-categ-meta">25%</span>
-              <span class="span-categ-atual">15%</span>
-            </div>
-            <div class="categorias-item">
-              <span class="span-categ-descricao">Custos Fixos</span>
-              <span class="span-categ-meta">40%</span>
-              <span class="span-categ-atual">50%</span>
-            </div>
-            <div class="categorias-item">
-              <span class="span-categ-descricao">Conforto</span>
-              <span class="span-categ-meta">10%</span>
-              <span class="span-categ-atual">10%</span>
-            </div>
-            <div class="categorias-item">
-              <span class="span-categ-descricao">Curto/Médio Prazo</span>
-              <span class="span-categ-meta">10%</span>
-              <span class="span-categ-atual">10%</span>
-            </div>
-            <div class="categorias-item">
-              <span class="span-categ-descricao">Prazeres</span>
-              <span class="span-categ-meta">10%</span>
-              <span class="span-categ-atual">10%</span>
-            </div>
-            <div class="categorias-item">
-              <span class="span-categ-descricao">Conhecimento</span>
-              <span class="span-categ-meta">5%</span>
-              <span class="span-categ-atual">5%</span>
-            </div>
+
           </div>
-          <div class="categorias-grafico">
-            Gráfico aqui
+
+          <div class="category-chart">
+            <canvas class="category-chart-canvas" id="category-doughnut"></canvas>
+
+            <div class="category-chart-center">
+              <strong id="category-month-total">R$ 22.000,00</strong>
+              <span>Total no mês</span>
+            </div>
+
           </div>
+
+          <div class="category-breakdown">
+            <ul class="category-list">
+
+              <li class="category-item">
+                <p class="category-name">Investimentos</p>
+                <div class="category-bar">
+                  <div class="category-bar-fill"></div>
+                </div>
+                <span class="category-value">R$ 525,00</span>
+                <span class="category-percentage">25%</span>
+              </li>
+
+              <li class="category-item">
+                <p class="category-name">Estudos</p>
+                <div class="category-bar">
+                  <div class="category-bar-fill"></div>
+                </div>
+                <span class="category-value">R$ 105,00</span>
+                <span class="category-percentage">5%</span>
+              </li>
+
+              <li class="category-item">
+                <p class="category-name">Custo Fixo</p>
+                <div class="category-bar">
+                  <div class="category-bar-fill"></div>
+                </div>
+                <span class="category-value">R$ 299,00</span>
+                <span class="category-percentage">14%</span>
+              </li>
+
+            </ul>
+          </div>
+
+
         </div>
       </section>
     </section>
@@ -301,6 +320,7 @@
   </main>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script type="module" src="js/script.js"></script>
 </body>
 

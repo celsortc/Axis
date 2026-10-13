@@ -112,6 +112,16 @@ Priorizar testes de:
 - validação da soma das metas;
 - criação, edição e exclusão de transações.
 
+## Backlog de melhorias de interface — após as funcionalidades
+
+- [ ] Adicionar um ícone de interrogação ao lado de cada card do Overview, com uma explicação do cálculo e do período considerado.
+  - Receitas e despesas: explicar que consideram os lançamentos do mês atual.
+  - Resultado no período: explicar que é a diferença entre receitas e despesas do mês.
+  - Saldo em conta: explicar que é acumulado entre os meses; a explicação sobre datas futuras deve seguir a regra financeira que ainda será definida.
+  - Disponibilizar a explicação também por clique/toque e teclado, não apenas ao passar o mouse.
+
+Prioridade definida em 02/10/2026: implementar funcionalidades primeiro; esta melhoria fica para depois.
+
 ## Como executar localmente
 
 O projeto não possui etapa de build. Como utiliza ES Modules, abra a pasta por meio de um servidor HTTP local, por exemplo a extensão Live Server do VS Code, e acesse `index.html`.

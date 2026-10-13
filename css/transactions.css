@@ -186,6 +186,46 @@
   color: #475569;
 }
 
+.transaction-category-badge.category-salario {
+  background-color: var(--category-salario-bg);
+  color: var(--category-salario-text);
+}
+
+.transaction-category-badge.category-renda-extra {
+  background-color: var(--category-renda-extra-bg);
+  color: var(--category-renda-extra-text);
+}
+
+.transaction-category-badge.category-custos-fixos {
+  background-color: var(--category-custos-fixos-bg);
+  color: var(--category-custos-fixos-text);
+}
+
+.transaction-category-badge.category-investimentos {
+  background-color: var(--category-investimentos-bg);
+  color: var(--category-investimentos-text);
+}
+
+.transaction-category-badge.category-conforto {
+  background-color: var(--category-conforto-bg);
+  color: var(--category-conforto-text);
+}
+
+.transaction-category-badge.category-metas {
+  background-color: var(--category-metas-bg);
+  color: var(--category-metas-text);
+}
+
+.transaction-category-badge.category-prazeres {
+  background-color: var(--category-prazeres-bg);
+  color: var(--category-prazeres-text);
+}
+
+.transaction-category-badge.category-conhecimento {
+  background-color: var(--category-conhecimento-bg);
+  color: var(--category-conhecimento-text);
+}
+
 .transaction-actions-container {
   display: flex;
   align-items: center;
